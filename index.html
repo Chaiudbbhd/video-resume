@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Video Display</title>
+    <style>
+        /* Responsive video container */
+        .video-container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">My Video Player</h2>
+
+    <div class="video-container">
+        <video 
+            controls 
+            autoplay 
+            loop 
+            muted 
+            poster="lpk.png">
+            
+            <source src="video.mp4" type="video/mp4">
+            <source src="video.webm" type="video/webm">
+
+            <!-- Fallback text -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+</body>
+</html>
