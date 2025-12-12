@@ -1,140 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Premium YouTube Video Embed</title>
+    <title>Animated Resume Message</title>
+
     <style>
         body {
-            font-family: "Poppins", Arial, sans-serif;
-            background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-            padding: 30px;
+            background: #121212;
+            font-family: "Poppins", sans-serif;
             color: white;
+            overflow-x: hidden;
         }
 
-        h2 {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-shadow: 0px 0px 10px #00eaff;
-        }
-
-        /* GLASS CARD */
-        .video-wrapper {
-            max-width: 1100px;
-            margin: auto;
-            padding: 25px;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.10);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            animation: fadeSlideUp 1.5s ease;
-        }
-
-        /* Thumbnail styling */
-        .thumbnail {
+        /* CONTAINER */
+        .scene {
+            margin-top: 40px;
             width: 100%;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0px 0px 20px rgba(0,255,255,0.4);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
         }
 
-        /* Neon Hover */
-        @media (min-width: 768px) {
-            .thumbnail:hover {
-                transform: scale(1.04);
-                box-shadow: 0px 0px 35px rgba(0,255,255,0.8);
-            }
+        /* BOY */
+        .boy {
+            font-size: 60px;
+            position: relative;
+            animation: boyPull 3s ease-in-out forwards;
         }
 
-        /* Click Text */
-        .click-text {
-            margin-top: 12px;
-            font-size: 20px;
-            text-align: center;
-            font-weight: 600;
-            color: #eafcff;
-            text-shadow: 0px 0px 10px cyan;
-            animation: fadein 1.5s ease-in-out;
+        /* ROPE */
+        .rope {
+            width: 140px;
+            height: 4px;
+            background: gold;
+            margin-left: 10px;
+            animation: ropeStretch 3s ease-in-out forwards;
         }
 
-        /* Responsive YouTube iframe */
-        .iframe-video {
-            width: 100%;
-            height: 480px;
-            border-radius: 20px;
-            display: none;
-            border: 2px solid rgba(255,255,255,0.3);
-            box-shadow: 0px 0px 25px rgba(0,255,255,0.5);
-            animation: fadeZoom 0.8s ease-in-out;
+        /* TEXT BOX */
+        .textbox {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid cyan;
+            padding: 20px;
+            border-radius: 12px;
+            width: 320px;
+            backdrop-filter: blur(10px);
+            margin-left: 20px;
+            box-shadow: 0px 0px 18px cyan;
+            opacity: 0;
+            transform: translateX(200px);
+            animation: slideBox 3s ease-in-out forwards;
         }
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            .iframe-video {
-                height: 240px;
-            }
-            .click-text {
-                font-size: 16px;
-            }
-        }
-
-        /* Tablet */
-        @media (max-width: 900px) and (min-width: 601px) {
-            .iframe-video {
-                height: 360px;
-            }
+        /* TEXT FADE */
+        .textbox p {
+            animation: fadeIn 2s ease forwards;
         }
 
         /* ANIMATIONS */
-        @keyframes fadein {
+        @keyframes boyPull {
+            from { transform: translateX(0); }
+            to { transform: translateX(40px); }
+        }
+
+        @keyframes ropeStretch {
+            from { width: 0px; }
+            to { width: 140px; }
+        }
+
+        @keyframes slideBox {
+            0%   { transform: translateX(250px); opacity: 0; }
+            60%  { transform: translateX(0px); opacity: 1; }
+            100% { transform: translateX(0px); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
 
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeZoom {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
     </style>
-
-    <script>
-        function playVideo() {
-            document.getElementById("thumb").style.display = "none";
-            document.getElementById("text").style.display = "none";
-            document.getElementById("ytvideo").style.display = "block";
-        }
-    </script>
 </head>
+
 <body>
 
-    <h2>My Premium YouTube Video Player</h2>
+<h2 style="text-align:center; text-shadow: 0 0 15px cyan;">
+    Animated Resume Message
+</h2>
 
-    <div class="video-wrapper">
+<div class="scene">
+    
+    <!-- Small Boy Emoji (can replace with PNG later) -->
+    <div class="boy">👦</div>
 
-        <!-- Thumbnail Image -->
-        <img id="thumb" src="lpk.png" class="thumbnail" onclick="playVideo()">
+    <!-- Rope -->
+    <div class="rope"></div>
 
-        <!-- Click message -->
-        <div id="text" class="click-text">✨ Click on the image to start playing the video ✨</div>
-
-        <!-- YouTube Player -->
-        <iframe 
-            id="ytvideo"
-            class="iframe-video"
-            src="https://www.youtube.com/embed/yi9vJdFz3p8?autoplay=1&rel=0&vq=hd1080"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-        </iframe>
-
+    <!-- Text Box -->
+    <div class="textbox">
+        <p>
+            <strong>This is my resume animated version made by AI.</strong><br><br>
+            You can see my whole resume in 1 minute 20 seconds.<br><br>
+            <strong>Thank you!</strong>
+        </p>
     </div>
+</div>
 
 </body>
 </html>
